@@ -16,13 +16,19 @@ public class MyArray {
     }
 
     public MyArray(double[] elements) {
-        this.elements = elements;
         this.length=elements.length;
+        this.elements=new double[this.length];
+        for(int i=0;i<this.length;i++){
+            this.elements[i]=elements[i];
+        }
     }
 
     public MyArray(MyArray array){
-        this.elements= array.elements;
         this.length=array.length;
+        this.elements=new double[this.length];
+        for(int i=0;i<this.length;i++){
+            this.elements[i]=array.elements[i];
+        }
     }
 
     public  MyArray(String fileName){
@@ -39,23 +45,26 @@ public class MyArray {
 
         line=scanner.nextLine();
         String[] items=line.split(" ");
-        double[] temp=new double[length];
 
+        this.elements=new double[this.length];
         for(int i=0;i<length;i++){
-            temp[i]=Double.parseDouble(items[i]);
+            this.elements[i]=Double.parseDouble(items[i]);
         }
-        this.elements=temp;
     }
 
     public void fillRandom(double a,double b){
         Random random=new Random();
 
         for(int i=0;i<length;i++){
-            elements[i]= a+random.nextInt((int)b);
+            elements[i]= a+random.nextDouble()*(b-a);
         }
     }
 
     public double mean(){
+        if(length==0){
+            return Double.NaN;
+        }
+
         double sum=0;
         for(int i=0;i<length;i++){
             sum+=elements[i];
@@ -64,6 +73,10 @@ public class MyArray {
     }
 
     public double stddev(){
+        if(length==0){
+            return Double.NaN;
+        }
+
         double average=mean();
         double sum=0;
         for(int i=0;i<length;i++){
