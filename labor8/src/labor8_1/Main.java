@@ -55,5 +55,7 @@ public class Main {
 //        q4.printQueue();
         System.out.println();
         System.out.println( q3.equals( q4 ));
+//        q3.printQueue();
+//        q4.printQueue();
     }
 }

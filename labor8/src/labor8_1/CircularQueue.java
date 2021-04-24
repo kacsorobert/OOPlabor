@@ -75,8 +75,10 @@ public class CircularQueue implements IQueue{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CircularQueue that = (CircularQueue) o;
-        Arrays.sort(that.items);
-        Arrays.sort(items);
-        return CAPACITY == that.CAPACITY && Arrays.equals(items, that.items);
+        Object[] temp1=Arrays.copyOf(that.items,that.items.length);
+        Object[] temp2=Arrays.copyOf(items,items.length);
+        Arrays.sort(temp1);
+        Arrays.sort(temp2);
+        return CAPACITY == that.CAPACITY && Arrays.equals(temp1, temp2);
     }
 }
