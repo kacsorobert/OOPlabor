@@ -7,9 +7,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        PrintStream ps= null;
+        PrintStream ps1= null;
         try {
-            ps = new PrintStream("labor10/warnings.csv");
+            ps1 = new PrintStream("labor10/warnings.csv");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -63,16 +63,17 @@ public class Main {
 
             if(!DateUtil.isValidDate(year,month,day)){
                 System.out.println("Invalid date:"+line);
+                continue;
             }
 
             if(credit<30){
-                ps.println(line);
+                ps1.println(line);
+                continue;
             }
-            else{
-                ps2.println(line);
-            }
+            ps2.println(line);
+
         }
         scanner.close();
-        ps.close();
+        ps1.close();
     }
 }
