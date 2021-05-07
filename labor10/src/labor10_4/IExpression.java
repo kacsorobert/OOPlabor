@@ -3,7 +3,7 @@ package labor10_4;
 public interface IExpression {
     public static double evaluate(String postfixExpression) throws ExpressionException{
         String[] items=postfixExpression.split(" ");
-        Stack stack=new Stack(items.length);
+        Stack stack=new Stack(3);
 
         double operand1,operand2;
         for(String item:items){
@@ -35,6 +35,7 @@ public interface IExpression {
                 throw new ExpressionException("Wrong postfix expression");
             }
         }
+
         if(stack.getSize()!=1){
             throw new ExpressionException("Wrong postfix expression");
         }
